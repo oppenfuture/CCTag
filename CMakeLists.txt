@@ -173,6 +173,15 @@ link_directories(${GSL_LINK_DIRECTORIES})
 
 add_subdirectory(src)
 
+# Adds tests
+set(BUILD_TESTS ON CACHE BOOL "Build test set")
+if (BUILD_TESTS)
+add_subdirectory(3rdparty/googletest-release-1.7.0)
+add_subdirectory(tests)
+
+endif()
+
+
 # FIND CMINPACK
 #find_package(CMINPACK REQUIRED)
 #include_directories(${CMINPACK_INCLUDE_DIRS})
