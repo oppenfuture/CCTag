@@ -17,7 +17,7 @@ target_link_libraries(CCTagTests gtest_main
 				     ${CUDA_CUDADEVRT_LIBRARY} )
 else()
 target_link_libraries(CCTagTests gtest_main 
-                      CCTag CCTagCuda
+                      CCTag
                      ${OPTPP_LIBRARIES}
 				     ${Ceres_LIBRARIES})
 
