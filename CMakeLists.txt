@@ -177,8 +177,7 @@ add_subdirectory(src)
 set(BUILD_TESTS ON CACHE BOOL "Build test set")
 if (BUILD_TESTS)
 add_subdirectory(3rdparty/googletest-release-1.7.0)
-add_subdirectory(tests)
-
+add_subdirectory(src/tests)
 endif()
 
 
