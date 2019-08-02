@@ -17,7 +17,6 @@ install:
     - vcpkg install
           boost-accumulators
           boost-algorithm
-          boost-container
           boost-date-time
           boost-exception
           boost-filesystem
