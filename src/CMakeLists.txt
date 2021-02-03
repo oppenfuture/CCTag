@@ -99,7 +99,7 @@ if(CCTAG_WITH_CUDA)
   # since we used CUDA_ADD_LIBRARY we cannot use PUBLIC or PRIVATE here
   target_link_libraries(CCTag
                        ${opencv_LIBS}
-                       boost_date_time boost_chrono boost_thread boost_serialization boost_system boost_filesystem boost_atomic boost_program_options boost_timer
+                       Boost::date_time Boost::chrono Boost::thread Boost::serialization Boost::system Boost::filesystem Boost::atomic Boost::program_options Boost::timer
                        ${Eigen3_LIBRARIES}
                        ${TBB_LIBRARIES} ${CUDA_CUDADEVRT_LIBRARY})
 
@@ -150,7 +150,7 @@ else() # without CUDA
                         PUBLIC
                           ${opencv_LIBS}
                           ${Eigen3_LIBRARIES}
-                          boost_atomic boost_chrono boost_date_time boost_filesystem boost_serialization boost_system boost_thread boost_timer
+                          Boost::atomic Boost::chrono Boost::date_time Boost::filesystem Boost::serialization Boost::system Boost::thread Boost::timer
                         PRIVATE
                           ${TBB_LIBRARIES})
 
