@@ -71,7 +71,7 @@ target_link_libraries(detection PUBLIC
   CCTag::CCTag
   ${TBB_tbb_LIBRARY_RELEASE}
   ${opencv_LIBS}
-  boost_filesystem boost_program_options boost_timer
+  Boost::filesystem Boost::program_options Boost::timer
   )
 
 if(IL_FOUND OR DevIL_FOUND)
@@ -93,7 +93,7 @@ target_include_directories(regression PUBLIC ${opencv_INCLUDE_DIRS})
 target_link_libraries(regression PUBLIC
   CCTag::CCTag
   ${opencv_LIBS}
-  boost_program_options boost_serialization
+  Boost::program_options Boost::serialization
   )
 
 add_executable(simulation ${CCTagSimulation_cpp})
