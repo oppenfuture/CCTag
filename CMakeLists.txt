@@ -10,6 +10,7 @@ project(CCTag VERSION 1.0.0 LANGUAGES C CXX)
 if (EXISTS ${CMAKE_BINARY_DIR}/conan_paths.cmake)
   include(${CMAKE_BINARY_DIR}/conan_paths.cmake)
 endif()
+set(CMAKE_MODULE_PATH ${CMAKE_BINARY_DIR} ${CMAKE_MODULE_PATH})
 
 #CMakeDependentOption
 option(CCTAG_SERIALIZE "Store all the output" OFF)

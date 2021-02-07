@@ -91,17 +91,17 @@ if(CCTAG_WITH_CUDA)
   # INCLUDE_DIRECTORIES -- "$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}>"
   include_directories(${CMAKE_CURRENT_LIST_DIR}
                       ${opencv_INCLUDE_DIRS} ${Eigen3_INCLUDE_DIR}
-		      ${TBB_INCLUDE_DIRS}
+                      ${TBB_INCLUDE_DIRS}
                       "${CMAKE_SOURCE_DIR}/src")
 
   CUDA_ADD_LIBRARY(CCTag ${CUDA_cpp} ${CUDA_cu} ${CCTag_cpp})
 
   # since we used CUDA_ADD_LIBRARY we cannot use PUBLIC or PRIVATE here
   target_link_libraries(CCTag
-                       ${opencv_LIBS}
+                       opencv::opencv
                        Boost::date_time Boost::chrono Boost::thread Boost::serialization Boost::system Boost::filesystem Boost::atomic Boost::program_options Boost::timer
-                       ${Eigen3_LIBRARIES}
-                       ${TBB_LIBRARIES} ${CUDA_CUDADEVRT_LIBRARY})
+                       Eigen3::Eigen3
+                       TBB::tbb ${CUDA_CUDADEVRT_LIBRARY})
 
   if(NOT "${CMAKE_CXX_COMPILER_ID}" STREQUAL "MSVC")
    target_link_libraries(CCTag pthread dl)
@@ -148,11 +148,11 @@ else() # without CUDA
 
   target_link_libraries(CCTag
                         PUBLIC
-                          ${opencv_LIBS}
-                          ${Eigen3_LIBRARIES}
+                          opencv::opencv
+                          Eigen3::Eigen3
                           Boost::atomic Boost::chrono Boost::date_time Boost::filesystem Boost::serialization Boost::system Boost::thread Boost::timer
                         PRIVATE
-                          ${TBB_LIBRARIES})
+                          TBB::tbb)
 
   if(NOT "${CMAKE_CXX_COMPILER_ID}" STREQUAL "MSVC")
     target_link_libraries(CCTag PRIVATE pthread dl)

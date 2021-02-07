@@ -69,8 +69,8 @@ target_include_directories(detection PUBLIC
   )
 target_link_libraries(detection PUBLIC
   CCTag::CCTag
-  ${TBB_tbb_LIBRARY_RELEASE}
-  ${opencv_LIBS}
+  TBB::tbb
+  opencv::opencv
   Boost::filesystem Boost::program_options Boost::timer
   )
 
@@ -92,12 +92,12 @@ add_executable(regression ${CCTagRegression_cpp})
 target_include_directories(regression PUBLIC ${opencv_INCLUDE_DIRS})
 target_link_libraries(regression PUBLIC
   CCTag::CCTag
-  ${opencv_LIBS}
+  opencv::opencv
   Boost::program_options Boost::serialization
   )
 
 add_executable(simulation ${CCTagSimulation_cpp})
 target_include_directories(simulation PUBLIC ${opencv_INCLUDE_DIRS})
-target_link_libraries(simulation PUBLIC ${opencv_LIBS})
+target_link_libraries(simulation PUBLIC opencv::opencv)
 
 install(TARGETS detection regression simulation DESTINATION bin)
